@@ -3,11 +3,10 @@
 <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
-    <title>Formulario de Matrícula - Escuela San Mateo</title>
+    <title>Formulario de Matrícula - Escuela San Cristobal</title>
     <style>
-        /* Colores minimalistas: beige, blanco y tonos suaves */
         body {
-            background-color: #f5f1e9; /* beige muy claro */
+            background-color: #f5f1e9;
             font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
             margin: 0; padding: 0;
             display: flex;
@@ -17,21 +16,16 @@
             color: #5a5a5a;
         }
         .container {
-            background: #ffffff; /* blanco */
+            background: #ffffff;
             max-width: 900px;
             width: 90%;
             border-radius: 12px;
             box-shadow: 0 6px 15px rgba(140, 120, 90, 0.15);
             padding: 30px 35px;
         }
-        h1 {
-            text-align: center;
-            color: #7d705a; /* beige oscuro */
-            margin-bottom: 30px;
-            font-weight: 700;
-        }
-        /* Botones generales */
-        button {
+        h1 { text-align: center; color: #7d705a; margin-bottom: 30px; font-weight: 700; }
+
+        button, a.btn-secondary {
             cursor: pointer;
             border: none;
             border-radius: 8px;
@@ -41,123 +35,36 @@
             color: #5a5a5a;
             user-select: none;
             box-shadow: 0 1px 4px rgba(125, 112, 90, 0.2);
-        }
-        /* Botón principal (beige suave) */
-        .btn-primary {
-            background-color: #d9cbb6; /* beige suave */
-            color: #4a4432;
-            font-weight: 600;
-        }
-        .btn-primary:hover {
-            background-color: #c6b797;
-        }
-        /* Botón secundario */
-        .btn-secondary {
-            background-color: #f0eadf; /* blanco beige */
-            color: #7d705a;
-            font-weight: 500;
-        }
-        .btn-secondary:hover {
-            background-color: #e3dbc7;
+            text-decoration: none;
         }
 
-        /* Formulario */
-        form {
-            margin-top: 15px;
-        }
-        label {
-            display: block;
-            margin-top: 18px;
-            font-weight: 600;
-            color: #6e6650;
-        }
+        .btn-primary { background-color: #d9cbb6; color: #4a4432; font-weight: 600; }
+        .btn-primary:hover { background-color: #c6b797; }
+
+        .btn-secondary { background-color: #f0eadf; color: #7d705a; font-weight: 500; }
+        .btn-secondary:hover { background-color: #e3dbc7; }
+
+        form { margin-top: 15px; }
+        label { display: block; margin-top: 18px; font-weight: 600; color: #6e6650; }
         input[type="text"], input[type="date"], input[type="email"], select {
-            width: 100%;
-            padding: 10px 14px;
-            margin-top: 8px;
-            border: 1.5px solid #ddd6c5;
-            border-radius: 8px;
-            font-size: 16px;
-            box-sizing: border-box;
-            background-color: #fcfbf7;
-            color: #5a5a5a;
+            width: 100%; padding: 10px 14px; margin-top: 8px; border: 1.5px solid #ddd6c5;
+            border-radius: 8px; font-size: 16px; box-sizing: border-box; background-color: #fcfbf7; color: #5a5a5a;
             transition: border-color 0.3s;
         }
-        input[type="text"]:focus, input[type="date"]:focus, input[type="email"]:focus, select:focus {
-            border-color: #c6b797;
-            outline: none;
-            background-color: #fff;
-        }
-        .radio-group {
-            margin-top: 10px;
-        }
-        .radio-group label {
-            font-weight: 500;
-            margin-right: 20px;
-            color: #6e6650;
-            cursor: pointer;
-        }
-        .radio-group input[type="radio"] {
-            margin-right: 8px;
-            cursor: pointer;
-        }
+        input:focus, select:focus { border-color: #c6b797; outline: none; background-color: #fff; }
 
-        /* Tabla */
-        table {
-            width: 100%;
-            border-collapse: collapse;
-            margin-top: 35px;
-            font-size: 15px;
-            color: #6e6650;
-            box-shadow: 0 2px 8px rgba(217, 203, 182, 0.3);
-        }
-        th, td {
-            padding: 14px 10px;
-            border: 1px solid #e1dbcc;
-            text-align: center;
-        }
-        th {
-            background-color: #d9cbb6; /* beige suave */
-            color: #5a533d;
-            font-weight: 700;
-        }
-        tbody tr:nth-child(odd) {
-            background-color: #f7f4eb; /* beige muy claro */
-        }
+        .radio-group { margin-top: 10px; }
+        .radio-group label { font-weight: 500; margin-right: 20px; color: #6e6650; cursor: pointer; }
+        .radio-group input[type="radio"] { margin-right: 8px; cursor: pointer; }
 
-        /* Mensajes de error */
-        .error-message {
-            color: #b33a3a;
-            font-weight: 600;
-            margin-top: 14px;
-            text-align: center;
-        }
+        .error-message { color: #b33a3a; font-weight: 600; margin-top: 14px; text-align: center; }
 
-        /* Contenedores de pantalla (inicio y formulario) */
-        #pantalla-inicio, #pantalla-formulario {
-            display: none;
-        }
-        #pantalla-inicio.active, #pantalla-formulario.active {
-            display: block;
-        }
+        #pantalla-inicio, #pantalla-formulario { display: none; }
+        #pantalla-inicio.active, #pantalla-formulario.active { display: block; }
 
-        /* Centrar contenido inicio */
-        #pantalla-inicio {
-            text-align: center;
-            color: #7d705a;
-        }
-        #pantalla-inicio h1 {
-            font-size: 3.5rem;
-            margin-bottom: 10px;
-            font-weight: 800;
-        }
-        #pantalla-inicio h2 {
-            font-weight: 500;
-            font-size: 1.6rem;
-            margin-bottom: 40px;
-            font-style: italic;
-            color: #a6987a;
-        }
+        #pantalla-inicio { text-align: center; color: #7d705a; }
+        #pantalla-inicio h1 { font-size: 3.5rem; margin-bottom: 10px; font-weight: 800; }
+        #pantalla-inicio h2 { font-weight: 500; font-size: 1.6rem; margin-bottom: 40px; font-style: italic; color: #a6987a; }
     </style>
 </head>
 <body>
@@ -173,7 +80,7 @@
 
     <!-- PANTALLA FORMULARIO -->
     <div id="pantalla-formulario">
-        <h1>Formulario de Matrícula Escolar - Escuela San Mateo</h1>
+        <h1>Formulario de Matrícula Escolar - Escuela San Cristobal</h1>
 
         <div id="mensajeError" class="error-message"></div>
 
@@ -219,125 +126,89 @@
                 <button type="button" id="limpiar" class="btn-secondary">Limpiar</button>
                 <button type="button" id="volverInicio" class="btn-secondary" style="float:right;">Volver a Inicio</button>
             </div>
-        </form>
 
-        <table id="tablaEstudiantes">
-            <thead>
-                <tr>
-                    <th># Matrícula</th>
-                    <th>Nombre</th>
-                    <th>Cédula / ID</th>
-                    <th>Fecha Nac.</th>
-                    <th>Grado</th>
-                    <th>Encargado/a</th>
-                    <th>Teléfono</th>
-                    <th>Correo</th>
-                    <th>Sección</th>
-                </tr>
-            </thead>
-            <tbody>
-                <!-- Filas de estudiantes agregados -->
-            </tbody>
-        </table>
+            <!-- Botón para ver lista de matriculados en otra página -->
+            <div style="margin-top: 20px; text-align:center;">
+                <a href="madricula.html" class="btn-secondary" target="_blank">Lista de matriculados</a>
+            </div>
+        </form>
     </div>
 </div>
 
 <script>
-    let contadorMatricula = 1;
+let contadorMatricula = 1;
+const pantallaInicio = document.getElementById('pantalla-inicio');
+const pantallaFormulario = document.getElementById('pantalla-formulario');
+const btnIngresar = document.getElementById('btnIngresar');
+const btnVolverInicio = document.getElementById('volverInicio');
+const btnLimpiar = document.getElementById('limpiar');
+const form = document.getElementById('formMatricula');
+const mensajeError = document.getElementById('mensajeError');
 
-    const pantallaInicio = document.getElementById('pantalla-inicio');
-    const pantallaFormulario = document.getElementById('pantalla-formulario');
+btnIngresar.addEventListener('click', () => {
+    pantallaInicio.classList.remove('active');
+    pantallaFormulario.classList.add('active');
+    mensajeError.textContent = '';
+    form.reset();
+    window.scrollTo({ top: 0, behavior: 'smooth' });
+});
 
-    const btnIngresar = document.getElementById('btnIngresar');
-    const btnVolverInicio = document.getElementById('volverInicio');
-    const btnLimpiar = document.getElementById('limpiar');
-    const form = document.getElementById('formMatricula');
-    const mensajeError = document.getElementById('mensajeError');
-    const tablaBody = document.querySelector('#tablaEstudiantes tbody');
+btnVolverInicio.addEventListener('click', () => {
+    pantallaFormulario.classList.remove('active');
+    pantallaInicio.classList.add('active');
+    mensajeError.textContent = '';
+    form.reset();
+    window.scrollTo({ top: 0, behavior: 'smooth' });
+});
 
-    btnIngresar.addEventListener('click', () => {
-        pantallaInicio.classList.remove('active');
-        pantallaFormulario.classList.add('active');
-        mensajeError.textContent = '';
-        form.reset();
-        window.scrollTo({ top: 0, behavior: 'smooth' });
-    });
+btnLimpiar.addEventListener('click', () => {
+    form.reset();
+    mensajeError.textContent = '';
+});
 
-    btnVolverInicio.addEventListener('click', () => {
-        pantallaFormulario.classList.remove('active');
-        pantallaInicio.classList.add('active');
-        mensajeError.textContent = '';
-        form.reset();
-        window.scrollTo({ top: 0, behavior: 'smooth' });
-    });
-
-    btnLimpiar.addEventListener('click', () => {
-        form.reset();
-        mensajeError.textContent = '';
-    });
-
-    function validarFormulario() {
-        mensajeError.textContent = '';
-        const camposObligatorios = [
-            'nombre',
-            'cedula',
-            'fechaNacimiento',
-            'grado',
-            'encargado',
-            'telefono'
-        ];
-        for (const id of camposObligatorios) {
-            const campo = document.getElementById(id);
-            if (!campo.value.trim()) {
-                mensajeError.textContent = `Error: El campo "${campo.previousElementSibling.textContent.trim()}" es obligatorio.`;
-                campo.focus();
-                return false;
-            }
-        }
-        const seccionSeleccionada = form.seccion.value;
-        if (!seccionSeleccionada) {
-            mensajeError.textContent = 'Error: Debe seleccionar una sección.';
+function validarFormulario() {
+    mensajeError.textContent = '';
+    const camposObligatorios = ['nombre','cedula','fechaNacimiento','grado','encargado','telefono'];
+    for (const id of camposObligatorios) {
+        const campo = document.getElementById(id);
+        if (!campo.value.trim()) {
+            mensajeError.textContent = `Error: El campo "${campo.previousElementSibling.textContent.trim()}" es obligatorio.`;
+            campo.focus();
             return false;
         }
-        return true;
     }
-
-    function agregarEstudiante(datos) {
-        const tr = document.createElement('tr');
-        tr.innerHTML = `
-            <td>${contadorMatricula}</td>
-            <td>${datos.nombre}</td>
-            <td>${datos.cedula}</td>
-            <td>${datos.fechaNacimiento}</td>
-            <td>${datos.grado}</td>
-            <td>${datos.encargado}</td>
-            <td>${datos.telefono}</td>
-            <td>${datos.correo || ''}</td>
-            <td>${datos.seccion}</td>
-        `;
-        tablaBody.appendChild(tr);
-        contadorMatricula++;
+    if (!form.seccion.value) {
+        mensajeError.textContent = 'Error: Debe seleccionar una sección.';
+        return false;
     }
+    return true;
+}
 
-    form.addEventListener('submit', e => {
-        e.preventDefault();
-        if (!validarFormulario()) return;
+form.addEventListener('submit', e => {
+    e.preventDefault();
+    if (!validarFormulario()) return;
 
-        const datos = {
-            nombre: form.nombre.value.trim(),
-            cedula: form.cedula.value.trim(),
-            fechaNacimiento: form.fechaNacimiento.value,
-            grado: form.grado.value,
-            encargado: form.encargado.value.trim(),
-            telefono: form.telefono.value.trim(),
-            correo: form.correo.value.trim(),
-            seccion: form.seccion.value
-        };
-        agregarEstudiante(datos);
-        form.reset();
-        mensajeError.textContent = '';
-        window.scrollTo({ top: 0, behavior: 'smooth' });
-    });
+    const datos = {
+        nombre: form.nombre.value.trim(),
+        cedula: form.cedula.value.trim(),
+        fechaNacimiento: form.fechaNacimiento.value,
+        grado: form.grado.value,
+        encargado: form.encargado.value.trim(),
+        telefono: form.telefono.value.trim(),
+        correo: form.correo.value.trim(),
+        seccion: form.seccion.value
+    };
+
+    // Guardar estudiante en localStorage
+    let estudiantes = JSON.parse(localStorage.getItem('estudiantes') || '[]');
+    estudiantes.push({ id: contadorMatricula, ...datos });
+    localStorage.setItem('estudiantes', JSON.stringify(estudiantes));
+    contadorMatricula++;
+    
+    form.reset();
+    mensajeError.textContent = '¡Estudiante matriculado con éxito!';
+    setTimeout(()=> mensajeError.textContent='', 3000);
+});
 </script>
 
 </body>
